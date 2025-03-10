@@ -6,6 +6,11 @@ import ShowCube from "./components/ShowCube";
 import MakeCube from "./components/MakeCube";
 import A from "./components/A";
 import B from "./components/B";
+import PlusMinus from "./components/PlusMinus";
+import ColorCubes from "./components/ColorCubes";
+import RedBlueCubes from "./components/RedBlueCubes";
+import Trees from "./components/Trees";
+import AdderCubes from "./components/AdderCubes";
 
 function App() {
   const [textSize, setTextSize] = useState(16);
@@ -34,7 +39,7 @@ function App() {
   };
 
   const randomInt = () => {
-    let nbr = Math.floor(Math.random() * 26 + 5);
+    let nbr = Math.floor(Math.random() * 21 + 5);
     return nbr;
   };
   const [nm, setNm] = useState(randomInt);
@@ -65,6 +70,15 @@ function App() {
       <div className={form2} style={{ color: "white", textAlign: "center" }}>
         {nm}
       </div>
+      3
+      <PlusMinus />
+      4
+      <ColorCubes />
+      5
+      <RedBlueCubes />
+      Trees
+      <Trees />
+      <AdderCubes />
     </>
   );
 }

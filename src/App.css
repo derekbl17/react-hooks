@@ -5,10 +5,23 @@
 .cube {
   width: 100px;
   height: 100px;
-  background: rgb(0, 0, 0);
   margin: 5px;
-  color: aqua;
   padding: 5px;
+}
+.cubeNums {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  padding: 5px;
+  background-color: black;
+  color: white;
+}
+.cubeTree {
+  width: 60px;
+  height: 50px;
+  margin: 5px;
+  padding: 5px;
+  background-color: rgb(0, 247, 255);
 }
 .cube-container {
   display: flex;
@@ -30,4 +43,13 @@
   margin: 5px;
   color: aqua;
   padding: 5px;
+}
+.tree-container-container {
+  display: flex;
+  background-color: darkgreen;
+}
+.tree-container {
+  width: 30%;
+  background-color: rgb(31, 182, 31);
+  margin: 5px;
 }
