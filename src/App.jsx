@@ -11,6 +11,10 @@ import ColorCubes from "./components/ColorCubes";
 import RedBlueCubes from "./components/RedBlueCubes";
 import Trees from "./components/Trees";
 import AdderCubes from "./components/AdderCubes";
+import UseEffect1 from "./components/UseEffect1";
+import UseEffect2 from "./components/UseEffect2";
+import UseEffect3 from "./components/UseEffect3";
+import LsClicker from "./components/LsClicker";
 
 function App() {
   const [textSize, setTextSize] = useState(16);
@@ -79,6 +83,10 @@ function App() {
       Trees
       <Trees />
       <AdderCubes />
+      <UseEffect1/>
+      <UseEffect2/>
+      <UseEffect3/>
+      <LsClicker/>
     </>
   );
 }

@@ -53,3 +53,36 @@
   background-color: rgb(31, 182, 31);
   margin: 5px;
 }
+.card{
+  border: 1px solid black;
+  padding: 5px;
+}
+.card img{
+  width:200px;
+}
+.card-container{
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.expanded {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.expanded img {
+  object-fit: cover;
+    width: 50%;
+    height: 70%;
+    border-radius: 8px;
+    border:2px solid rgb(0, 0, 0);
+}
+
