@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 import "./App.css";
 import ShowNum from "./components/ShowNum";
 import NumberButton from "./components/NumberButton";
@@ -15,6 +15,9 @@ import UseEffect1 from "./components/UseEffect1";
 import UseEffect2 from "./components/UseEffect2";
 import UseEffect3 from "./components/UseEffect3";
 import LsClicker from "./components/LsClicker";
+import UseBooks from "./components/UseBooks";
+import Senelis from "./components/Senelis";
+import UseRef from "./components/UseRef";
 
 function App() {
   const [textSize, setTextSize] = useState(16);
@@ -51,11 +54,12 @@ function App() {
     setNm(randomInt);
   };
 
+
+
   return (
     <>
       <div>
-        <NumberButton action={numUp} />
-        <ShowNum num={number} />
+        
       </div>
       <MakeCube action={addCube} cubeCount={cubeArr.length} />
       <div className="cube-container">
@@ -86,7 +90,12 @@ function App() {
       <UseEffect1/>
       <UseEffect2/>
       <UseEffect3/>
+      <UseBooks/>
       <LsClicker/>
+      <NumberButton action={numUp} />
+        <ShowNum num={number} />
+      <Senelis num={number}/>
+      <UseRef/>
     </>
   );
 }
