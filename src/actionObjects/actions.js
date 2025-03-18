@@ -4,8 +4,8 @@ import {
   CUBE_ADD,
   CUBE_MINUS,
   GET_USER,
-  DESC,
-  ASC,
+  SORT_NAME,
+  SORT_ZIP,
 } from "../constants/consts.js";
 
 export const addFunc = () => {
@@ -39,20 +39,16 @@ export const getUser = (users) => {
     payload: users,
   };
 };
-export const sortAsc = (type) => {
+export const sortName = (type) => {
   return {
-    type: ASC,
+    type: SORT_NAME,
     payload: type,
   };
 };
-export const sortDesc = (type) => {
+
+export const sortZip = (a) => {
   return {
-    type: DESC,
-    payload: type,
-  };
-};
-export const sortZip = () => {
-  return {
-    type: a,
+    type: SORT_ZIP,
+    payload: a
   };
 };

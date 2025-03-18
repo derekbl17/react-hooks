@@ -4,8 +4,8 @@ import {
   CUBE_ADD,
   CUBE_MINUS,
   GET_USER,
-  ASC,
-  DESC,
+  SORT_NAME,
+  SORT_ZIP
 } from "../constants/consts.js";
 
 export const counterReducer = (state, action) => {
@@ -42,22 +42,18 @@ export const counterReducer = (state, action) => {
 
 export const getUserReducer = (state, action) => {
   let stateCopy = [...state];
-  console.log("user red");
   switch (action.type) {
     case GET_USER:
       console.log("get red");
       stateCopy = action.payload;
       break;
-    case ASC:
-      stateCopy.sort((a, b) => (a.name > b.name ? 1 : -1));
+    case SORT_NAME:
+      action.payload==="asc"? stateCopy.sort((a, b) => (a.name > b.name ? 1 : -1)) : stateCopy.sort((a, b) => (b.name > a.name ? 1 : -1))
       break;
-    case DESC:
-      stateCopy.sort((a, b) => (b.name > a.name ? 1 : -1));
-      break;
-    case ZIP:
+    case SORT_ZIP:
       action.payload === "asc"
-        ? stateCopy.sort((a, b) => (a.name > b.name ? 1 : -1))
-        : stateCopy.sort((a, b) => (b.name > a.name ? 1 : -1));
+        ? stateCopy.sort((a, b) => (a.address.zipcode > b.address.zipcode ? 1 : -1))
+        : stateCopy.sort((a, b) => (b.address.zipcode > a.address.zipcode ? 1 : -1));
     default:
       break;
   }

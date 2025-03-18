@@ -26,9 +26,8 @@ import {
   cubeMinus,
   getUser,
   minusFunc,
-  sortAsc,
-  sortDesc,
-  sortZip,
+  sortName,
+  sortZip
 } from "./actionObjects/actions";
 
 function App() {
@@ -72,17 +71,20 @@ function App() {
 
   useEffect(() => {
     axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
-      getUser(res.data);
+      usersDispatch(getUser(res.data));
       console.log("fetch:", res.data);
     });
   }, []);
 
   return (
     <>
-      <button onClick={() => usersDispatch()}></button>
-      {users.map((el) => (
-        <div>
-          <h2>z{el}</h2>
+      <button onClick={() => usersDispatch(sortName("asc"))}>sort name asc</button>
+      <button onClick={() => usersDispatch(sortName("desc"))}>sort name desc</button>
+      <button onClick={() => usersDispatch(sortZip("asc"))}>sort zip desc</button>
+      <button onClick={() => usersDispatch(sortZip("desc"))}>sort zip desc</button>
+      {users.map((el, i) => (
+        <div key={i}>
+          <h2>{el.name} {el.address.zipcode}</h2>
         </div>
       ))}
       <br />
