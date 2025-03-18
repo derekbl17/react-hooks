@@ -1,5 +1,6 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useReducer, useEffect } from "react";
 import "./App.css";
+import axios from "axios";
 import ShowNum from "./components/ShowNum";
 import NumberButton from "./components/NumberButton";
 import ShowCube from "./components/ShowCube";
@@ -18,6 +19,17 @@ import LsClicker from "./components/LsClicker";
 import UseBooks from "./components/UseBooks";
 import Senelis from "./components/Senelis";
 import UseRef from "./components/UseRef";
+import { counterReducer, getUserReducer } from "./reducers/counterReducer";
+import {
+  addFunc,
+  cubeAdd,
+  cubeMinus,
+  getUser,
+  minusFunc,
+  sortAsc,
+  sortDesc,
+  sortZip,
+} from "./actionObjects/actions";
 
 function App() {
   const [textSize, setTextSize] = useState(16);
@@ -30,10 +42,10 @@ function App() {
     setNumber((prev) => prev + 1);
   };
 
-  const [cubeArr, setCubeArr] = useState([]);
-  const addCube = () => {
-    setCubeArr((prev) => [...prev, 0]);
-  };
+  // const [cubeArr, setCubeArr] = useState([]);
+  // const addCube = () => {
+  //   setCubeArr((prev) => [...prev, 0]);
+  // };
 
   const [form, setForm] = useState("circle");
   const toggleForm = () => {
@@ -53,12 +65,51 @@ function App() {
   const randNm = () => {
     setNm(randomInt);
   };
+  const [countState, dispatchCount] = useReducer(counterReducer, 0);
+  const [cubeArr, dispatchCubeArr] = useReducer(counterReducer, []);
 
+  const [users, usersDispatch] = useReducer(getUserReducer, []);
 
+  useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+      getUser(res.data);
+      console.log("fetch:", res.data);
+    });
+  }, []);
 
   return (
     <>
-      <div>
+      <button onClick={() => usersDispatch()}></button>
+      {users.map((el) => (
+        <div>
+          <h2>z{el}</h2>
+        </div>
+      ))}
+      <br />
+      <h1>{countState}</h1>
+      <button onClick={() => dispatchCount(addFunc())}>Count up</button>
+      <button onClick={() => dispatchCount(minusFunc())}>Count down</button>
+      <br />
+      <button onClick={() => dispatchCubeArr(cubeAdd())}>cube up</button>
+      <button onClick={() => dispatchCubeArr(cubeMinus())}>cube down</button>
+      <input type="number" id="cubeInput" />
+      <button onClick={() => dispatchCubeArr(cubeAdd(cubeInput.value))}>
+        create given number of cubes
+      </button>
+      <br />
+      {/* <input
+        type="number"
+        value={number}
+        onChange={(e) => setNumber(e.target.value)}
+      />
+      {number} */}
+
+      <div className="cube-container">
+        {cubeArr.map((el, i) => (
+          <div className="cube" key={i}></div>
+        ))}
+      </div>
+      {/* <div>
         
       </div>
       <MakeCube action={addCube} cubeCount={cubeArr.length} />
@@ -95,7 +146,7 @@ function App() {
       <NumberButton action={numUp} />
         <ShowNum num={number} />
       <Senelis num={number}/>
-      <UseRef/>
+      <UseRef/> */}
     </>
   );
 }
